@@ -20,10 +20,7 @@ Windodws Server DNS, export to unbound, for use on a firewall / pfSense
   * Add the line 'server:include: /var/unbound/unbound.adinclude.conf'
   * Must be manually restored as part of the firewall build process
   Once the changes are in place, Active Directory domain controllers can point to the Unbound instance of DNS for seamless operations, re-run the script at a later date, DNS changes for AD SRV and CNAME records don't occur without a major reconfiguration.
-  Optionally, disable dynamic DNS on the domain controllers, if they are pointing to Unbound:
-  # Windows Registry Editor Version 5.00
-  # [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters]
-  # "UseDynamicDns"=dword:00000000
+  Optionally, disable dynamic DNS on the domain controllers, if they are pointing to Unbound
 .PARAMETER OutputFile
   Output filename, default is ".\unbound.adinclude.conf", removes any file that exists
 .INPUTS

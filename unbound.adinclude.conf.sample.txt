@@ -1,0 +1,39 @@
+# Start of Unbound Windows DNS include file
+# Upload to firewall, /var/unbound
+# Include configuration file in custom options for the DNS Resolver:
+# server:include: /var/unbound/unbound.adinclude.conf
+local-zone: "_msdcs.contoso.com" typetransparent
+private-domain: "_msdcs.contoso.com"
+local-data: "@._msdcs.contoso.com. 3600 IN NS dc1.contoso.com."
+local-data: "649d2acb-3b4c-bb77-06a2-f1745afabc6b._msdcs.contoso.com. 600 IN CNAME dc1.contoso.com."
+local-data: "_kerberos._tcp.Default-First-Site-Name._sites.dc._msdcs.contoso.com. 600 IN SRV 0 100 88 dc1.contoso.com."
+local-data: "_ldap._tcp.Default-First-Site-Name._sites.dc._msdcs.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_kerberos._tcp.dc._msdcs.contoso.com. 600 IN SRV 0 100 88 dc1.contoso.com."
+local-data: "_ldap._tcp.dc._msdcs.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_ldap._tcp.310eeaf2-b377-2122-b449-8683ab6e95da.domains._msdcs.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "gc._msdcs.contoso.com. 600 IN A 10.254.254.20"
+local-data: "_ldap._tcp.Default-First-Site-Name._sites.gc._msdcs.contoso.com. 600 IN SRV 0 100 3268 dc1.contoso.com."
+local-data: "_ldap._tcp.gc._msdcs.contoso.com. 600 IN SRV 0 100 3268 dc1.contoso.com."
+local-data: "_ldap._tcp.pdc._msdcs.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-zone: "contoso.com" typetransparent
+private-domain: "contoso.com"
+local-data: "@.contoso.com. 600 IN A 10.254.254.20"
+local-data: "_gc._tcp.Default-First-Site-Name._sites.contoso.com. 600 IN SRV 0 100 3268 dc1.contoso.com."
+local-data: "_kerberos._tcp.Default-First-Site-Name._sites.contoso.com. 600 IN SRV 0 100 88 dc1.contoso.com."
+local-data: "_ldap._tcp.Default-First-Site-Name._sites.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_gc._tcp.contoso.com. 600 IN SRV 0 100 3268 dc1.contoso.com."
+local-data: "_kerberos._tcp.contoso.com. 600 IN SRV 0 100 88 dc1.contoso.com."
+local-data: "_kpasswd._tcp.contoso.com. 600 IN SRV 0 100 464 dc1.contoso.com."
+local-data: "_ldap._tcp.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_kerberos._udp.contoso.com. 600 IN SRV 0 100 88 dc1.contoso.com."
+local-data: "_kpasswd._udp.contoso.com. 600 IN SRV 0 100 464 dc1.contoso.com."
+local-data: "DomainDnsZones.contoso.com. 600 IN A 10.254.254.20"
+local-data: "_ldap._tcp.Default-First-Site-Name._sites.DomainDnsZones.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_ldap._tcp.DomainDnsZones.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "ForestDnsZones.contoso.com. 600 IN A 10.254.254.20"
+local-data: "_ldap._tcp.Default-First-Site-Name._sites.ForestDnsZones.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "_ldap._tcp.ForestDnsZones.contoso.com. 600 IN SRV 0 100 389 dc1.contoso.com."
+local-data: "dc1.contoso.com. 3600 IN A 10.254.254.20"
+local-zone: "TrustAnchors" typetransparent
+private-domain: "TrustAnchors"
+local-data: "@.TrustAnchors. 3600 IN NS dc1.contoso.com."

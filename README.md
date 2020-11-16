@@ -1,10 +1,9 @@
 # WinDnsToUnbound
 Windodws Server DNS, export to unbound, for use on a firewall / pfSense
 
-<#
-.SYNOPSIS
+SYNOPSIS
   Gets the DNS zone information and records from Active Directory, exports it to an include file for the Unbound DNS resolver.
-.DESCRIPTION
+DESCRIPTION
   Rationale:
   * DNS needs appliance-level availability, and forcing Windows DNS with Active Directory impacts uptime and perception, server down == network down
   * This provides for the potential of local host resolution using the Active Directory / Azure AD domain, and retaining UPNs that match the Azure AD, e.g. email@contoso.com
@@ -19,21 +18,20 @@ Windodws Server DNS, export to unbound, for use on a firewall / pfSense
   * Open the pfSense web interface, browse to Services, DNS Resolver, Custom Options
   * Add the line 'server:include: /var/unbound/unbound.adinclude.conf'
   * Must be manually restored as part of the firewall build process
-  Once the changes are in place, Active Directory domain controllers can point to the Unbound instance of DNS for seamless operations, re-run the script at a later date, DNS changes for AD SRV and CNAME records don't occur without a major reconfiguration.
+  * AD DNS records are relatively static
   Optionally, disable dynamic DNS on the domain controllers, if they are pointing to Unbound
-.PARAMETER OutputFile
+PARAMETER OutputFile
   Output filename, default is ".\unbound.adinclude.conf", removes any file that exists
-.INPUTS
+INPUTS
   None
-.OUTPUTS
+OUTPUTS
   Configuration file, as per above
-.NOTES
+NOTES
   Version:        0.0.2
   Author:         Joel Eckert
   Creation Date:  November 15, 2020
   Purpose/Change: Initial script development
-.EXAMPLE
+EXAMPLE
   Note: Run as a domain admin on a domain controller
   WinDnsToUnbound                                       # Creates "unbound.adinclude.conf" in the current directory
   WinDnsToUnbound -OutputFile ".\configuration.conf"    # Creates file as specified
-#>

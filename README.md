@@ -8,7 +8,7 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
 - Verify configuration file
   - Open with a text editor (e.g. notepad++ or something that supports UNIX format)
   - Remove bogus entries, such as for network adapters with multiple IP addresses that are not accessible
-- Upload configuration file
+- Upload configuration file, copy/paste into nano (pkg install nano), or WinSCP
   - /var/unbound/unbound.adinclude.conf
   - chmod 644 /var/unbound/unbound.adinclude.conf
   - chown root:unbound /var/unbound/unbound.adinclude.conf

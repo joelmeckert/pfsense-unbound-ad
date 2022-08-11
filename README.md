@@ -1,5 +1,5 @@
-# WinDnsToUnbound
-Gets the DNS zone information and records from Active Directory, exports it to an include file for the Unbound DNS resolver, commonly used with pfSense.
+# unbound-ad
+Export Active Directory DNS information to an unbound include file, SRV records, to use unbound / pfSense as the DNS resolver, rather than Windows AD DNS.
 
 ## Future Updates
 I'm working on a revision of this that obtains the domain / AD SID, and autopopulates the entries. I need to test with multiple domain controllers.

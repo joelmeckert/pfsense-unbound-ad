@@ -12,7 +12,7 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
   - /var/unbound/unbound.adinclude.conf
   - chmod 644 /var/unbound/unbound.adinclude.conf
   - chown root:unbound /var/unbound/unbound.adinclude.conf
-- Unbound advanced configuration:
+- Unbound, Services => DNS Resolver => Custom options
   - server:include: /var/unbound/unbound.adinclude.conf
 - Point the clients to use the firewall as DNS
 

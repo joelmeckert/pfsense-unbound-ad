@@ -21,11 +21,6 @@ ForEach ($DC in $DCs) {
   # Add the entry to the appropriate DNS records, this is more for my purposes
 }
 ```
-To obtain the domain SID in PowerShell:
-```
-$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
-# Add the entry to the appropriate DNS records, this is more for my purposes
-```
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller

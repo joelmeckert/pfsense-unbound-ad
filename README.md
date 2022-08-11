@@ -15,7 +15,7 @@ $DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-O
 $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
 ForEach ($DC in $DCs) {
   $Hostname = $DC.HostName
-  $Guid = $DCs.InvocationId.Guid
+  $Guid = $DC.InvocationId.Guid
   # Write information to configuration file here from output
   # Add the entry to the appropriate DNS records, this is more for my purposes
 }

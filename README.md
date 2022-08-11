@@ -1,4 +1,4 @@
-# unbound-pfsense-ad
+# pfsense-unbound-ad
 Export Active Directory DNS to unbound include file, SRV records, to use unbound / pfSense as the DNS resolver, rather than Windows AD DNS.
 
 ## Future

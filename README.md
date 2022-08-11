@@ -18,7 +18,7 @@ ForEach ($DC in $DCs) {
   $Hostname = $DC.HostName
   $Guid = $DCs.InvocationId.Guid
   # Write information to configuration file here from output
-   # Add the entry to the appropriate DNS records, this is more for my purposes
+  # Add the entry to the appropriate DNS records, this is more for my purposes
 }
 ```
 To obtain the domain SID in PowerShell:

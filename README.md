@@ -30,7 +30,7 @@ server:include: /var/unbound/unbound.adinclude.conf
 - Using unbound with TYPETRANSPARENT, it is possible to use a UPN that reflects the public internet UPN, without split DNS
   - TYPETRANSPARENT will attempt to resolve the DNS record locally first, and when this fails, it will revert to the firewall's system-configured DNS
   - Tested with Azure AD Connect domains and standard Active Directory
-  - Unbound should support deferring DNS resolution to an alternate DNS server as specified in the configuration file, where the firewall does not have the local records, it is on my agenda to test
+  - Conceptually, unbound should support deferring DNS resolution to an alternate DNS server as specified in the configuration file, where the firewall does not have the local records, it is on my agenda to test
 - pfSense's DHCP implementation will automatically link local DHCP/DNS registrations and PTR by default
 
 ## Future

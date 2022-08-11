@@ -6,7 +6,9 @@ I'm working on a revision of this that obtains the domain GUID, domain controlle
 To obtain the domain GUID and DC GUID in PowerShell:
 - Domain GUID
   - Run pwsh / powershell as Administrator
-  - Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
+```
+Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
+```
 - Domain controller GUID
   - Run pwsh / powershell as Administrator
  ```

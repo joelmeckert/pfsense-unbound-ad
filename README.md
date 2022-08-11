@@ -9,9 +9,9 @@ To obtain the domain GUID and DC GUID in PowerShell:
   - Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
 - Domain controller GUID
   - Run pwsh / powershell as Administrator
-  - ```
-  - $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
-  - ```
+ ```
+  $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
+ ```
   - It will return an array, if multiple DCs are present
 To obtain the domain SID in PowerShell:
 - Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value

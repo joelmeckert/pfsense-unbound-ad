@@ -6,8 +6,11 @@ I'm working on a revision of this that obtains the domain SID, domain controller
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller
-- Configuration file is automatically generated
-- Upload the configuration file to the firewall, enter an include statement in unbound to include the file
+- Configuration file is automatically generated, unbound.adinclude.conf
+- Verify configuration file with a text editor, remove bogus entries, such as for netwrok adapters with multiple IP addresses that are not accessible
+- Upload to /var/unbound
+- Unbound advanced configuration:
+  - server:include: /var/unbound/unbound.adinclude.conf
 - Point the clients to use the firewall as DNS
 
 ## Limitations
@@ -19,7 +22,7 @@ I'm working on a revision of this that obtains the domain SID, domain controller
 - Using unbound with TYPETRANSPARENT, it is possible to use a UPN that reflects the public internet UPN, without split DNS
   - TYPETRANSPARENT will attempt to resolve the DNS record locally first, and when this fails, it will revert to the firewall's system-configured DNS
   - Tested with Azure AD Connect domains and standard Active Directory
-- The Unbound option of TypeTransparent will attempt to resolve the DNS query, and if there is no entry, it will pass it on to the host / firewall's DNS servers
+  - Unbound should support deferring DNS resolution to an alternate DNS server as specified in the configuration file, where the firewall does not have the local records, it is on my agenda to test
 - pfSense's DHCP implementation will automatically link local DHCP/DNS registrations and PTR
 
 More information is available in the PowerShell script comments.

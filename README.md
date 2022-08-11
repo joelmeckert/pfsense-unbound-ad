@@ -1,25 +1,6 @@
 # pfsense-unbound-ad
 Export Active Directory DNS to unbound include file, SRV records, to use unbound / pfSense as the DNS resolver, rather than Windows AD DNS.
 
-## Future
-I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and autopopulates the entries. I need to test with multiple domain controllers. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and obtaining the domain and DC GUIDs via PowerShell would be preferable.
-### Domain GUID in PowerShell:
-- Run pwsh / powershell as Administrator
-```
-$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
-# Add contents of variable to DNS entry for domain GUID DNS entries
-```
-### Domain Controller GUIDs in PowerShell:
-- Run pwsh / powershell as Administrator
- ```
-$DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
-ForEach ($DC in $DCs) {
-  $Hostname = $DC.HostName
-  $Guid = $DC.InvocationId.Guid
-  # Write information to configuration file here from output
-  # Add the entry to the appropriate DNS records, this is more for my purposes
-}
-```
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller
@@ -47,4 +28,22 @@ ForEach ($DC in $DCs) {
   - Unbound should support deferring DNS resolution to an alternate DNS server as specified in the configuration file, where the firewall does not have the local records, it is on my agenda to test
 - pfSense's DHCP implementation will automatically link local DHCP/DNS registrations and PTR
 
-More information is available in the PowerShell script comments.
+## Future
+I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and autopopulates the entries. I need to test with multiple domain controllers. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and obtaining the domain and DC GUIDs via PowerShell would be preferable.
+### Domain GUID in PowerShell:
+- Run pwsh / powershell as Administrator
+```
+$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
+# Add contents of variable to DNS entry for domain GUID DNS entries
+```
+### Domain Controller GUIDs in PowerShell:
+- Run pwsh / powershell as Administrator
+ ```
+$DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
+ForEach ($DC in $DCs) {
+  $Hostname = $DC.HostName
+  $Guid = $DC.InvocationId.Guid
+  # Write information to configuration file here from output
+  # Add the entry to the appropriate DNS records, this is more for my purposes
+}
+```

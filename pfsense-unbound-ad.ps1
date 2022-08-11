@@ -32,14 +32,14 @@
 .OUTPUTS
   Configuration file, as per above
 .NOTES
-  Version:        0.0.2.1
+  Version:        0.0.2.2
   Author:         Joel Eckert
-  Creation Date:  November 15, 2020
-  Purpose/Change: Initial script development
+  Creation Date:  August 11, 2022
+  Purpose/Change: Rename, updated documentation
 .EXAMPLE
   Note: Run as a domain admin on a domain controller
-  pfsense-unbound-ad                                      # Creates "unbound.adinclude.conf" in the current directory
-  pfsense-unbound-ad -OutputFile ".\configuration.conf"   # Creates file as specified
+  ./pfsense-unbound-ad.ps1                                      # Creates "unbound.adinclude.conf" in the current directory
+  ./pfsense-unbound-ad -OutputFile ".\configuration.conf"       # Creates file as specified
 #>
 
 Param (

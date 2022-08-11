@@ -21,6 +21,7 @@ server:include: /var/unbound/unbound.adinclude.conf
 - Point the clients and Active Directory servers to use the firewall as DNS
 
 ## Limitations
+- If the firewall is reinstalled and configuration restored, the file must be manually uploaded again
 - Active Directory uses secure dynamic DNS updates, this does not, it's likely a fit for smaller environments, but not larger environments
 
 ## Rationale

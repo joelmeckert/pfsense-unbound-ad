@@ -44,7 +44,7 @@ $DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-O
 ### pwsh Domain Controller GUIDs
 - Run pwsh / powershell as Administrator
  ```
-$DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
+$DCs = Get-ADDomainController
 ForEach ($DC in $DCs) {
   $Hostname = $DC.HostName
   $Guid = $DC.InvocationId.Guid

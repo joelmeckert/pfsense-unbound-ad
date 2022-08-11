@@ -1,8 +1,10 @@
 # unbound-pfsense-ad
 Export Active Directory DNS information to an unbound include file, SRV records, to use unbound / pfSense as the DNS resolver, rather than Windows AD DNS.
 
-## Future Updates
+## Future
 I'm working on a revision of this that obtains the domain SID, domain controllers, and autopopulates the entries. I need to test with multiple domain controllers. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and avoiding this and obtaining a list of DCs to populate the configuration file would be preferable.
+To obtain the domain SID in PowerShell:
+- Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller

@@ -7,16 +7,25 @@ To obtain the domain GUID and DC GUID in PowerShell:
 - Domain GUID
   - Run pwsh / powershell as Administrator
 ```
-Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
+$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
+$DomainGuid
 ```
 - Domain controller GUID
   - Run pwsh / powershell as Administrator
  ```
-  $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
- ```
-  - It will return an array, if multiple DCs are present
+$DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
+ForEach ($DC in $DCs) {
+  $Hostname = $DC.HostName
+  $Guid = $DCs.InvocationId.Guid
+  # Write information to configuration file here from output
+  # Add the entry to the appropriate DNS records, this is more for my purposes
+}
+```
 To obtain the domain SID in PowerShell:
-- Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
+```
+$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty DomainSID | Select-Object -ExpandProperty Value
+# Add the entry to the appropriate DNS records, this is more for my purposes
+```
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller

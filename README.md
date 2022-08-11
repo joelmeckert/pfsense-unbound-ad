@@ -31,13 +31,13 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
 
 ## Future
 I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and populates the entries. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and obtaining the domain and DC GUIDs via PowerShell would be preferable.
-### Domain GUID in PowerShell:
+### pwsh Domain GUID
 - Run pwsh / powershell as Administrator
 ```
 $DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
 # Add contents of variable to DNS entry for domain GUID DNS entries
 ```
-### Domain Controller GUIDs in PowerShell:
+### pwsh Domain Controller GUIDs
 - Run pwsh / powershell as Administrator
  ```
 $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid

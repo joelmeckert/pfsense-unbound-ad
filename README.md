@@ -8,7 +8,7 @@ To obtain the domain GUID and DC GUID in PowerShell:
   - Run pwsh / powershell as Administrator
 ```
 $DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
-$DomainGuid
+# Add contents of variable to DNS entry for domain GUID DNS entries
 ```
 - Domain controller GUID
   - Run pwsh / powershell as Administrator

@@ -7,8 +7,13 @@ I'm working on a revision of this that obtains the domain SID, domain controller
 ## Usage
 - Run the PowerShell script as admin on a domain controller
 - Configuration file is automatically generated, unbound.adinclude.conf
-- Verify configuration file with a text editor, remove bogus entries, such as for netwrok adapters with multiple IP addresses that are not accessible
-- Upload to /var/unbound
+- Verify configuration file
+  - Open with a text editor (e.g. notepad++ or something that supports UNIX format)
+  - Remove bogus entries, such as for netwrok adapters with multiple IP addresses that are not accessible
+- Upload configuration file
+  - /var/unbound/unbound.adinclude.conf
+  - chmod 644 /var/unbound/unbound.adinclude.conf
+  - chown root:unbound /var/unbound/unbound.adinclude.conf
 - Unbound advanced configuration:
   - server:include: /var/unbound/unbound.adinclude.conf
 - Point the clients to use the firewall as DNS

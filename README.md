@@ -21,7 +21,7 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
 
 ## Rationale
 - DNS and DHCP need appliance-level availability
-- There is a lot of fearmongering in this space, I was with a public university for 11 years
+- There is a lot of fearmongering in this space, I was with a public university for 11 years who used alternative DNS with 50k+ users, so it is possible
 - Forcing Windows DNS with Active Directory impacts uptime and perception, server down == network down
 - Using unbound with TYPETRANSPARENT, it is possible to use a UPN that reflects the public internet UPN, without split DNS
   - TYPETRANSPARENT will attempt to resolve the DNS record locally first, and when this fails, it will revert to the firewall's system-configured DNS

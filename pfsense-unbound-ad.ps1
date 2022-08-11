@@ -38,8 +38,8 @@
   Purpose/Change: Initial script development
 .EXAMPLE
   Note: Run as a domain admin on a domain controller
-  WinDnsToUnbound                                       # Creates "unbound.adinclude.conf" in the current directory
-  WinDnsToUnbound -OutputFile ".\configuration.conf"    # Creates file as specified
+  pfsense-unbound-ad                                      # Creates "unbound.adinclude.conf" in the current directory
+  pfsense-unbound-ad -OutputFile ".\configuration.conf"   # Creates file as specified
 #>
 
 Param (

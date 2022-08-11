@@ -7,7 +7,7 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
 - Configuration file is automatically generated, unbound.adinclude.conf
 - Verify configuration file
   - Open with a text editor (e.g. notepad++ or something that supports UNIX format)
-  - Remove bogus entries, such as for netwrok adapters with multiple IP addresses that are not accessible
+  - Remove bogus entries, such as for network adapters with multiple IP addresses that are not accessible
 - Upload configuration file
   - /var/unbound/unbound.adinclude.conf
   - chmod 644 /var/unbound/unbound.adinclude.conf

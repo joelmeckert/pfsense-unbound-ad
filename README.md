@@ -2,16 +2,15 @@
 Export Active Directory DNS to unbound include file, SRV records, to use unbound / pfSense as the DNS resolver, rather than Windows AD DNS.
 
 ## Future
-I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and autopopulates the entries. I need to test with multiple domain controllers. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and avoiding this and obtaining a list of DCs to populate the configuration file would be preferable.
-To obtain the domain GUID and DC GUID in PowerShell:
-- Domain GUID
-  - Run pwsh / powershell as Administrator
+I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and autopopulates the entries. I need to test with multiple domain controllers. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and obtaining the domain and DC GUIDs via PowerShell would be preferable.
+### Domain GUID in PowerShell:
+- Run pwsh / powershell as Administrator
 ```
 $DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
 # Add contents of variable to DNS entry for domain GUID DNS entries
 ```
-- Domain controller GUID
-  - Run pwsh / powershell as Administrator
+### Domain Controller GUIDs in PowerShell:
+- Run pwsh / powershell as Administrator
  ```
 $DCs = Get-ADDomainController | Select-Object -ExpandProperty InvocationID | Select-Object -ExpandProperty Guid
 ForEach ($DC in $DCs) {

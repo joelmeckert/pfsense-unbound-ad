@@ -4,10 +4,13 @@ Export Active Directory DNS to unbound include file, SRV records, to use unbound
 
 ## Usage
 - Run the PowerShell script as admin on a domain controller
+```
+.\Get-DomainInfo.ps1
+```
 - Configuration file is automatically generated, unbound.adinclude.conf
 - Verify configuration file
   - Open with a text editor (e.g. notepad++ or something that supports UNIX format)
-  - Remove bogus entries, such as for network adapters with multiple IP addresses that are not accessible
+  - Remove bogus entries, such as for network adapters with multiple IP addresses that are not accessible, hopefully rectified in this release
 - Upload configuration file, copy/paste into nano (pkg install nano), or WinSCP
   - Upload to /var/unbound/unbound.adinclude.conf
 ```
@@ -33,23 +36,3 @@ server:include: /var/unbound/unbound.adinclude.conf
   - Tested with Azure AD Connect domains and standard Active Directory
   - Conceptually, unbound should support deferring DNS resolution to an alternate DNS server as specified in the configuration file, where the firewall does not have the local records, it is on my agenda to test
 - pfSense's DHCP implementation will automatically link local DHCP/DNS registrations and PTR by default
-
-## Future
-I'm working on a revision of this that obtains the domain GUID, domain controllers GUID, and populates the entries. I've seen the export fail when the DNS servers are not responding appropriately with the SRV records, and obtaining the domain and DC GUIDs via PowerShell would be preferable.
-### pwsh Domain GUID
-- Run pwsh / powershell as Administrator
-```
-$DomainGuid = Get-ADDomain | Select-Object -ExpandProperty ObjectGUID | Select-Object -ExpandProperty Guid
-# Add contents of variable to DNS entry for domain GUID DNS entries
-```
-### pwsh Domain Controller GUIDs
-- Run pwsh / powershell as Administrator
- ```
-$DCs = Get-ADDomainController
-ForEach ($DC in $DCs) {
-  $Hostname = $DC.HostName
-  $Guid = $DC.InvocationId.Guid
-  # Write information to configuration file here from output
-  # Add the entry to the appropriate DNS records, this is more for my purposes
-}
-```

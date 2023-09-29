@@ -98,7 +98,7 @@ $unbound += 'local-data: "@.' + $domDnsName + '. 600 IN A ' + $fwGatewayIp + '"'
 
 ForEach ($dc in $dcs) {
     $dcIP = Resolve-DnsName -Name $dc.HostName -Type A | Where-Object -Property IPAddress -match $rxPrivateIP | Select-Object -ExpandProperty IPAddress | Select-Object -First 1
-    $unbound += 'local-data: "_gc._tcp.' + $dc.Site + 'e._sites.' + $domDnsName + '. 600 IN SRV 0 100 3268 ' + $dc.HostName + '."'
+    $unbound += 'local-data: "_gc._tcp.' + $dc.Site + '._sites.' + $domDnsName + '. 600 IN SRV 0 100 3268 ' + $dc.HostName + '."'
     $unbound += 'local-data: "_kerberos._tcp.' + $dc.Site + '._sites.' + $domDnsName + '. 600 IN SRV 0 100 88 ' + $dc.HostName + '."'
     $unbound += 'local-data: "_ldap._tcp.' + $dc.Site + '._sites.dc.' + $domDnsName + '. 600 IN SRV 0 100 389 ' + $dc.HostName + '."'
     $unbound += 'local-data: "_ldap._tcp.' + $dc.Site + '._sites.' + $domDnsName + '. 600 IN SRV 0 100 389 ' + $dc.HostName + '."'
